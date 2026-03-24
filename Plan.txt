@@ -1,0 +1,536 @@
+Versión personal optimizada para autoaprendizaje y práctica profesional.
+Duración sugerida: 12 meses (ajustable entre 9 y 15 según tu ritmo).
+Objetivo: adquirir competencias reales y empleables en redes, sistemas, automatización, cloud, IaC, CI/CD y observabilidad.
+
+
+---
+
+🧱 FASE 1 – Fundamentos de Infraestructura (Mes 1–3)
+
+Objetivo: construir una base sólida en Linux, redes y scripting, capaz de administrar, diagnosticar y automatizar tareas básicas.
+
+1. Linux y Hardware
+
+Conceptos clave
+
+Instalación y uso de Linux (Ubuntu Server o Debian) sin interfaz gráfica.
+
+Comandos básicos: ls, cd, cp, mv, grep, find, tar, top, df, du, ss, netstat.
+
+Administración: systemctl, journalctl, cron, ufw, iptables, sudo, chmod, chown.
+
+Gestión de paquetes: apt, dpkg.
+
+Procesos y logs: cómo verificar y reiniciar servicios.
+
+Monitoreo local: htop, vmstat, iostat, free, dmesg.
+
+
+Práctica
+
+Crear 2–3 VMs con VirtualBox o Proxmox.
+
+Configurar usuarios, permisos y firewall.
+
+Automatizar backups con rsync o tar y un cron job.
+
+
+Recursos
+
+Linux Journey
+
+SadServers
+
+OverTheWire Bandit
+
+
+Mini-proyecto 1:
+🧩 “Servidor de archivos con control de acceso y logs” (Samba o NFS).
+
+
+---
+
+2. Redes Fundamentales
+
+Conceptos clave
+
+Modelo OSI y TCP/IP.
+
+IP, máscaras, gateway, DNS, DHCP.
+
+Subnetting (sin calculadora).
+
+VLANs, Trunk, Access Ports, STP, OSPF de área única, ACLs básicas.
+
+NAT, PAT, DNS y NTP.
+
+Herramientas de diagnóstico: ping, traceroute, mtr, dig, nslookup, nc, tcpdump.
+
+
+Herramientas y recursos
+
+Cisco Packet Tracer (NetAcad)
+
+Wireshark
+
+Jeremy’s IT Lab – Curso CCNA gratuito
+
+ExamTopics – simulacros
+
+SubnetIPv4
+
+
+Mini-proyecto 2:
+🧩 “Red de oficina virtual” con 2 switches, un router, DHCP, DNS y ACLs simuladas en Packet Tracer.
+
+
+---
+
+3. Git y Automatización Inicial
+
+Conceptos clave
+
+Control de versiones: clone, add, commit, push, branch, merge, rebase.
+
+GitHub y repositorios remotos.
+
+Introducción al scripting con Bash.
+
+Automatización básica: loops, condiciones, variables, logs.
+
+Buenas prácticas de scripting: manejo de errores (set -euo pipefail), uso de jq (JSON) y yq (YAML).
+
+
+Recursos
+
+Pro Git (libro oficial)
+
+Bash Scripting Tutorial
+
+jq Manual
+
+
+Mini-proyecto 3:
+🧩 Script que genera backups automáticos (por ejemplo, de una base de datos o carpeta), los comprime y los sube a GitHub o S3.
+
+
+---
+
+☁️ FASE 2 – Virtualización, Contenedores y Cloud (Mes 4–6)
+
+Objetivo: dominar la virtualización moderna, contenedores, fundamentos de cloud y la automatización de infraestructura.
+
+4. Virtualización y Contenedores
+
+Conceptos clave
+
+Hipervisores tipo 1 y 2.
+
+Snapshots, clonación, redes NAT/Bridge.
+
+Docker: imágenes, contenedores, redes, volúmenes.
+
+Dockerfile y Docker Compose.
+
+Buenas prácticas: multi-stage builds, imágenes minimalistas, no correr como root.
+
+
+Recursos
+
+Docker Docs
+
+Play with Docker
+
+PeladoNerd – Playlist Docker
+
+
+Mini-proyecto 4:
+🧩 App “Hola Mundo” en Docker con base de datos Postgres, usando docker-compose.yml, multi-stage build y usuario non-root.
+
+
+---
+
+5. Cloud Computing (AWS Free Tier)
+
+Conceptos clave
+
+Qué es la nube (IaaS, PaaS, SaaS).
+
+AWS: IAM, EC2, S3, VPC, Security Groups, Load Balancers.
+
+Infraestructura segura y reproducible.
+
+
+Recursos
+
+AWS Cloud Practitioner Essentials
+
+Free Tier Guía Oficial
+
+AWS Workshops
+
+
+Mini-proyecto 5:
+🧩 Desplegar el contenedor Docker del proyecto 4 en una instancia EC2 pública y conectarla a S3 para backups.
+
+
+---
+
+6. Infraestructura como Código (Terraform)
+
+Conceptos clave
+
+Flujo: init, plan, apply, destroy.
+
+Variables, outputs, módulos, backend remoto.
+
+Versionado con Git.
+
+Prácticas colaborativas: workspaces, state locking, formateo (terraform fmt), linting (tflint).
+
+
+Recursos
+
+HashiCorp Learn Terraform
+
+KodeKloud Terraform Labs
+
+
+Mini-proyecto 6:
+🧩 Terraform que crea una VPC, subnets, Security Groups, EC2 y S3. Bonus: configurar el state remoto en S3.
+
+
+---
+
+⚙️ FASE 3 – CI/CD y Orquestación (Mes 7–9)
+
+Objetivo: automatizar todo el ciclo de integración y despliegue continuo.
+
+7. CI/CD con GitHub Actions
+
+Conceptos clave
+
+Workflows YAML, eventos push y pull_request.
+
+Jobs, runners, secrets.
+
+Pipeline completo: build → test → scan → deploy.
+
+Integración con Docker Hub y Terraform.
+
+Seguridad: reglas de protección de ramas y chequeos obligatorios.
+
+
+Recursos
+
+GitHub Actions Docs
+
+DaveOps – YouTube
+
+
+Mini-proyecto 7:
+🧩 Pipeline que construye y sube tu imagen Docker a Docker Hub automáticamente al hacer push a la rama main.
+
+
+---
+
+8. Kubernetes (Orquestación)
+
+Conceptos clave
+
+Arquitectura: master, nodes, pods.
+
+Objetos: Deployment, Service, ConfigMap, Secret, Ingress.
+
+Despliegues, escalamiento, actualizaciones.
+
+Redes: tipos de servicio (ClusterIP, NodePort, LoadBalancer), Ingress Controllers y Network Policies.
+
+
+Recursos
+
+Kubernetes by Example
+
+KodeKloud Kubernetes Basics
+
+Minikube
+
+
+Mini-proyecto 8:
+🧩 Desplegar la app del proyecto 4 en Kubernetes local con Secrets, ConfigMaps e Ingress.
+
+
+---
+
+9. Monitoreo y Observabilidad
+
+Conceptos clave
+
+Métricas, logs y trazas.
+
+Prometheus (métricas), Grafana (dashboards), Loki (logs).
+
+Alertas y visualización personalizada.
+
+
+Recursos
+
+Prometheus Docs
+
+Grafana Labs Docs
+
+Loki Docs
+
+
+Mini-proyecto 9:
+🧩 Dashboard Grafana con métricas de CPU, RAM y estado de contenedores o pods.
+
+
+---
+
+🔒 FASE 4 – Integración y Empleabilidad (Mes 10–12)
+
+10. Seguridad Práctica
+
+Conceptos clave
+
+IAM y principio de mínimo privilegio.
+
+Escaneo de vulnerabilidades con Trivy.
+
+Control de secretos en GitHub y Kubernetes.
+
+Autenticación SSH y hardening de Dockerfiles.
+
+
+Recursos
+
+Trivy Docs
+
+OWASP DevSecOps Guidelines
+
+AWS IAM Documentation
+
+
+Mini-proyecto 10:
+🧩 Mejorar el pipeline para incluir un job de Trivy que escanee la imagen Docker y falle si detecta vulnerabilidades críticas.
+
+
+---
+
+11. Habilidades Profesionales y Empleabilidad
+
+Conceptos clave
+
+Documentación técnica clara: README.md, diagramas y runbooks.
+
+Metodologías ágiles: Scrum y Kanban.
+
+Comunicación técnica y uso del inglés profesional.
+
+Presentación de proyectos y portafolio.
+
+
+Acciones
+
+Documentar cada mini-proyecto en GitHub como si fuera para un compañero de trabajo.
+
+Usar un tablero Kanban (GitHub Projects o Trello).
+
+Preparar un pitch técnico en inglés.
+
+
+
+---
+
+12. Proyecto Integrador Final
+
+Objetivo: combinar todo lo aprendido en un entorno funcional.
+
+Requisitos mínimos
+
+Repositorio Git documentado.
+
+App contenedorizada (Docker).
+
+Pipeline CI/CD con build, test, scan (Trivy) y deploy.
+
+Terraform (infraestructura completa).
+
+Kubernetes (despliegue).
+
+Prometheus + Grafana (monitoreo).
+
+README detallado con arquitectura, decisiones y pasos de ejecución.
+
+
+
+---
+
+🧰 Herramientas Gratuitas Útiles
+
+(se mantienen las mismas fuentes indicadas en los módulos)
+
+
+---
+
+📅 Sugerencia de Calendario (Flexible)
+
+Mes	Foco principal
+
+1	Linux + Hardware
+2	Redes + Packet Tracer
+3	Git + Bash
+4	Virtualización + Docker
+5	Cloud (AWS)
+6	Terraform
+7	CI/CD
+8	Kubernetes
+9	Observabilidad
+10	Seguridad + Habilidades Profesionales
+11–12	Proyecto Integrador Final
+
+
+
+---
+
+💡 Consejos de Aprendizaje
+
+Subí todo a GitHub, bien organizado por proyecto.
+
+Documentá como si fueras a olvidarlo todo: el README.md es tu carta de presentación profesional.
+
+Practicá troubleshooting diario (SadServers, KodeKloud Labs).
+
+En cada etapa, creá algo funcional, aunque sea simple.
+
+No memorices: entendé por qué algo funciona.
+
+Usá inglés técnico como idioma base de búsqueda.
+
+
+
+---
+
+🔁 Continuación Post-Plan
+
+Prepará una certificación clave (AWS Solutions Architect, Terraform Associate o CKAD).
+
+Sumá especializaciones en observabilidad avanzada, automatización (Ansible) o DevSecOps.
+
+Proyectos avanzados sugeridos:
+
+Simulación de incidentes (Chaos Engineering básico).
+
+Optimización de costos en cloud.
+
+Planes de Backup y Disaster Recovery.
+
+
+
+
+---
+
+♾️ DEVOPS: Filosofía, Rol y Ciclo
+
+DevOps no es solo un rol técnico, sino una cultura de colaboración y automatización que une a Desarrollo (Dev) y Operaciones (Ops) para entregar software más rápido, estable y seguro.
+
+
+---
+
+👥 Roles y Diferencias
+
+Rol	Qué hace	Enfoque	Herramientas típicas
+
+Dev	Escribe código de aplicaciones	Funcionalidad, features	Git, VSCode, frameworks, tests
+Ops	Mantiene servidores e infraestructura	Estabilidad, seguridad	Linux, AWS, Nginx, monitoreo
+DevOps	Automatiza y conecta ambos mundos	Fluidez, despliegue continuo	Docker, Terraform, Kubernetes, GitHub Actions, Prometheus, Grafana
+
+
+> 🧩 DevOps no crea apps, pero automatiza cómo se construyen, despliegan y mantienen vivas.
+
+
+
+
+---
+
+♾️ Ciclo DevOps Adaptado a tu Plan
+
+Fase	Qué haces	Herramientas
+
+PLAN 🧭	Definir features y documentar	Trello, GitHub Projects, README
+CODE 💻	Escribir scripts y configuraciones	Git, Bash, jq/yq
+BUILD 🧱	Construir artefactos y contenedores	Docker, Compose
+TEST 🧪	Validar código automáticamente	GitHub Actions
+RELEASE 🚀	Preparar despliegue automatizado	Actions + Docker Hub + Terraform
+DEPLOY ☁️	Crear y desplegar infraestructura	Terraform, AWS, Kubernetes
+OPERATE ⚙️	Mantener sistemas y tareas repetitivas	Kubernetes, AWS, Bash/Python
+MONITOR 🔍	Observar métricas y alertas	Prometheus, Grafana, Loki
+
+
+> 🔄 Los datos de MONITOR vuelven a PLAN, cerrando el ciclo de mejora continua.
+
+
+
+
+---
+
+🧠 Habilidades Clave Según el Plan
+
+Infraestructura y sistemas: Linux, redes, AWS.
+
+Contenedores y orquestación: Docker, Kubernetes.
+
+IaC: Terraform con state remoto.
+
+Automatización y CI/CD: GitHub Actions, Bash/Python.
+
+Monitoreo: Prometheus, Grafana, Loki.
+
+Colaboración: comunicación técnica y cultura DevOps.
+
+
+
+---
+
+💬 En Resumen
+
+> Un DevOps no es jefe ni árbitro: es el pegamento entre Dev y Ops.
+Su misión es que todo funcione, que los equipos colaboren y que el software llegue a los usuarios rápido, estable y seguro.
+Convierte conflictos en datos, automatiza procesos y mantiene el ciclo ♾️ vivo, impulsando la mejora continua y el aprendizaje constante.
+
+
+
+
+🎯 El Puesto Objetivo (Tu "Estrella Polar")
+Tu meta principal no es un rol, sino un perfil: el Ingeniero Híbrido (Infraestructura/Cloud).
+Este es el profesional que las empresas no encuentran: alguien que entiende de Redes (gracias a tu base de TUARI/CCNA) y además sabe Automatización y Nube (gracias a tu plan DevOps).
+🗺️ El Camino de Roles (Paso a Paso)
+Aquí tienes la "escalera" de puestos más común para llegar a ese objetivo.
+Nivel 1: El Punto de Partida (Primer Empleo)
+Tu primer trabajo será donde capitalizas tu base de Linux y Redes. Aquí es donde tu estudio de CCNA te da una ventaja inmediata.
+ * Puestos Objetivo:
+   * Analista de NOC (Network Operations Center): El rol perfecto para alguien con conocimientos de CCNA. Monitorearás y resolverás problemas de red.
+   * Administrador de Sistemas (SysAdmin) Junior: El rol perfecto para tu conocimiento de Linux (EA1: Taller de Linux). Administrarás servidores.
+   * Soporte Técnico Nivel 2 (Help Desk L2): Un rol donde resuelves problemas que el Nivel 1 no puede (a menudo de redes o servidores).
+Nivel 2: La Transición (Segundo Empleo)
+Aquí es donde haces el "salto". Usas la experiencia del Nivel 1 y le sumas el kit de herramientas moderno de tu plan (Docker, Terraform, AWS).
+ * Puestos Objetivo:
+   * Ingeniero de Cloud (Cloud Engineer) Junior: El nombre lo dice todo. Ayudarás a administrar la infraestructura en AWS, Azure o GCP.
+   * Analista CloudOps / InfraOps: Un rol enfocado en operar la plataforma en la nube (aplicar lo de tu Fase 2 y 3).
+   * NetDevOps (si vienes de NOC): Un rol más nuevo donde automatizas tareas de red con Python y Ansible.
+Nivel 3: El Rol Objetivo (La Meta Profesional)
+Ya tienes la base de redes/sistemas (Nivel 1) y la experiencia en nube/automatización (Nivel 2). Ahora los fusionas.
+ * Puestos Objetivo:
+   * Ingeniero de Infraestructura (Infrastructure Engineer): El título "híbrido" por excelencia.
+   * Ingeniero de Cloud (Cloud Engineer) (Semi-Senior/Senior): El rol estándar de la industria.
+   * Ingeniero DevOps: Ahora sí eres un DevOps con todas las letras, porque entiendes toda la pila, desde el cable hasta el pipeline.
+Nivel 4: La Especialización (El Siguiente Nivel)
+Una vez que dominas el Nivel 3, puedes especializarte en roles aún más cotizados.
+ * Puestos Objetivo:
+   * SRE (Site Reliability Engineer): Te enfocas en la confiabilidad, escalabilidad y rendimiento de las aplicaciones (como un DevOps, pero con un foco extremo en métricas y resiliencia).
+   * Platform Engineer: Construyes las "plataformas" internas (como un Kubernetes personalizado) para que los desarrolladores de tu empresa desplieguen su código fácilmente.
+   * Arquitecto de Soluciones Cloud (Cloud Solutions Architect): Te alejas un poco de la ejecución y te centras en el diseño de las soluciones en la nube.
+
+
+HNHIRING jobs
