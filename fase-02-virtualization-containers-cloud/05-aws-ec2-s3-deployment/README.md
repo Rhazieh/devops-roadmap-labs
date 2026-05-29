@@ -12,3 +12,10 @@ Para asegurar la cuenta y cumplir con las buenas prácticas de AWS, se realizaro
 
 ### Evidencias de Configuración
 ![IAM Users List](images/iam_user_mfa.png)
+
+## Misión 2: Redes y Firewall (VPC y Security Groups)
+
+Se configuró la seguridad a nivel de red para la instancia pública:
+- [x] **Security Group (Firewall Stateful):** Se creó el grupo `web-docker-sg` permitiendo únicamente tráfico SSH (puerto 22) desde una IP administrativa específica y tráfico HTTP (puerto 80/8000) desde cualquier origen (`0.0.0.0/0`).
+
+![Inbound Rules SG](images/security_group.png)
