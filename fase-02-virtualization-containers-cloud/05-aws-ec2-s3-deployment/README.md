@@ -27,3 +27,7 @@ Se aprovisionó un servidor Linux en la nube para alojar la aplicación:
 - [x] **Despliegue:** Se clonó el repositorio y se ejecutó el contenedor de la Fase 4, exponiendo el servicio al mundo a través del puerto 80.
 
 ![App Deployed en EC2](images/app_deployed.png)
+
+- [x] **Orquestación con Docker Compose:** Se migró el contenedor individual hacia un despliegue multi-contenedor. La aplicación Python ahora se comunica exitosamente con una base de datos PostgreSQL en la misma red de Docker, persistiendo los datos mediante volúmenes.
+
+![Docker Compose Success](images/compose_db_success.png)
