@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: db-produccion
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: web-produccion
+    restart: always
+    ports:
+      - "80:5000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: secret
+
+volumes:
+  pgdata:
