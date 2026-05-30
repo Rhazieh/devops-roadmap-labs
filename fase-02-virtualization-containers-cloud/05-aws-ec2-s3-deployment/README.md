@@ -19,3 +19,11 @@ Se configuró la seguridad a nivel de red para la instancia pública:
 - [x] **Security Group (Firewall Stateful):** Se creó el grupo `web-docker-sg` permitiendo únicamente tráfico SSH (puerto 22) desde una IP administrativa específica y tráfico HTTP (puerto 80/8000) desde cualquier origen (`0.0.0.0/0`).
 
 ![Inbound Rules SG](images/security_group.png)
+
+## Misión 3: Cómputo (EC2 y Docker)
+Se aprovisionó un servidor Linux en la nube para alojar la aplicación:
+- [x] **Instancia EC2:** Se desplegó una instancia `t3.micro` con Debian.
+- [x] **Preparación del Entorno:** Se instaló Docker y Git mediante comandos de terminal (SSH).
+- [x] **Despliegue:** Se clonó el repositorio y se ejecutó el contenedor de la Fase 4, exponiendo el servicio al mundo a través del puerto 80.
+
+![App Deployed en EC2](images/app_deployed.png)
