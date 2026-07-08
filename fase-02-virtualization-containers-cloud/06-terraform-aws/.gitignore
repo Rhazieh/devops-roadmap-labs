@@ -1,0 +1,13 @@
+# Ignorar carpeta oculta de trabajo de Terraform
+.terraform/
+
+# Ignorar archivos de estado local
+*.tfstate
+*.tfstate.*
+
+# Ignorar archivos de variables con contraseñas o claves del user 
+*.tfvars
+*.tfvars.json
+
+# Logs de errores
+crash.log
