@@ -16,10 +16,11 @@ En este primer paso se configuraron los archivos estructurales (`providers.tf`, 
 - [] **Recursos Base:** Declaración de una VPC (`10.0.0.0/16`) y un Bucket S3 con nomenclatura única y etiquetas de auditoría (`ManagedBy = Terraform`).
 
 ### Evidencias de Inicialización
-Aquí se observa la descarga exitosa de los plugins del proveedor de AWS y el plan de ejecución:
+Aquí se observa la descarga exitosa de los plugins del proveedor de AWS, el plan de ejecución y el apply:
 
 ![Terraform Init](images/02-terraform-init-successfully.png)
 ![Terraform Plan](images/03-terraform-plan.png)
+![Terraform Apply](images/04-terraform-apply-successfuly.png)
 
 Además de los EXPORT de claves:
 
