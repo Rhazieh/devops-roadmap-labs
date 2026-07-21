@@ -64,3 +64,64 @@ resource "aws_route_table_association" "public_assoc" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public_rt.id
 }
+
+# 7. Buscar la ultima AMI oficial de Ubuntu 24.04
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["099720109477"] # ID oficial de Canonical
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
+  }
+}
+
+# 8. Security Group (Firewall)
+resource "aws_security_group" "web_sg" {
+  name        = "web-docker-sg"
+  description = "Permitir SSH y trafico web"
+  vpc_id      = aws_vpc.main.id
+
+  # Regla de Entrada: SSH desde cualquier lado (para desarrollo)
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Regla de Entrada: HTTP para app Docker
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Regla de Salida: Permitir que la EC2 salga a internet a bajar paquetes
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1" # Significa "todos los protocolos"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name      = "web-docker-sg"
+    ManagedBy = "Terraform"
+  }
+}
+
+# 9. Instancia EC2
+resource "aws_instance" "web_server" {
+  ami           = data.aws_ami.ubuntu.id # Usa el ID de la AMI que busco el bloque data
+  instance_type = "t3.micro"             # Entra en el Free Tier
+
+  subnet_id              = aws_subnet.public.id
+  vpc_security_group_ids = [aws_security_group.web_sg.id]
+
+  tags = {
+    Name      = "${var.project_name}-ec2"
+    ManagedBy = "Terraform"
+  }
+}

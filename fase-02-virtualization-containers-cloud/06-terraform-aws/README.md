@@ -37,4 +37,16 @@ En esta etapa se segmentó la red virtual y se crearon los componentes necesario
 ### Evidencias de Infraestructura de Red
 
 ![Plan de Red](images/05-terraform-apply-four-extra-resources.png)
-![Apply de Red](images/06-subnet-vpc-from-aws-console.png)
+![Apply de Red en AWS Console](images/06-subnet-vpc-from-aws-console.png)
+
+## Hito 3: Seguridad y Compute (Security Group y EC2)
+
+En este paso se configuraron las reglas de firewall perimetral y se desplegó la máquina virtual utilizando la última imagen oficial de Ubuntu 24.04 LTS.
+
+- [x] **Búsqueda Dinámica de AMI:** Uso del bloque `data` para obtener automáticamente el ID de la AMI más reciente de Canonical.
+- [x] **Security Group (`web-docker-sg`):** Apertura de puertos `22` (SSH), `80` (HTTP) y egreso completo habilitado.
+- [x] **Instancia EC2:** Despliegue de una instancia `t3.micro` asociada a la subred pública y al Security Group.
+- [x] **Outputs:** Exposición de la IP pública de la instancia y nombre del S3 al finalizar el despliegue.
+
+### Evidencias de Despliegue
+![Apply EC2 Exitoso](images/07-ec2-sg-apply.png)
