@@ -50,3 +50,14 @@ En este paso se configuraron las reglas de firewall perimetral y se desplegó la
 
 ### Evidencias de Despliegue
 ![Apply EC2 Exitoso](images/07-ec2-sg-apply.png)
+
+## Bonus: Backend Remoto (State en S3)
+
+Para evitar guardar el archivo de estado sensible localmente y permitir el trabajo colaborativo, se migró el `terraform.tfstate` al bucket de S3 creado.
+
+- [x] **Configuración de Backend S3:** Declaración del bloque `backend "s3"` en `providers.tf`.
+- [x] **Migración de Estado:** Ejecución de `terraform init` para transferir el estado local hacia la nube.
+- [x] **Limpieza:** Ejecución de `terraform destroy` para desmontar la arquitectura y evitar costos.
+
+### Evidencias del State Remoto
+![Migracion Backend S3](images/08-s3-init.png)

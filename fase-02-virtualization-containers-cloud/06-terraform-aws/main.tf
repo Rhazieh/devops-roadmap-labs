@@ -13,7 +13,8 @@ resource "aws_vpc" "main" {
 # 2. Crear el Bucket de S3 (Para los archivos o el estado remoto futuro)
 resource "aws_s3_bucket" "lab_bucket" {
   # El nombre debe ser único globalmente en todo AWS. Le sumamos el ID propio.
-  bucket = "${var.project_name}-bucket-maxi-tandil"
+  bucket        = "${var.project_name}-bucket-maxi-tandil"
+  force_destroy = true
 
   tags = {
     Name        = "${var.project_name}-bucket"
@@ -125,3 +126,5 @@ resource "aws_instance" "web_server" {
     ManagedBy = "Terraform"
   }
 }
+
+

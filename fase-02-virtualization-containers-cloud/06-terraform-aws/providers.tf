@@ -1,13 +1,20 @@
 terraform {
-  required_version = ">=  1.5.0"
+  required_version = ">= 1.5.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0" # Descarga la version 5.x más reciente"
+      version = "~> 5.0"
     }
+  }
+
+  # Backend remoto en S3
+  backend "s3" {
+    bucket = "roadmap-terraform-bucket-maxi-tandil"
+    key    = "state/terraform.tfstate"
+    region = "us-east-1"
   }
 }
 
 provider "aws" {
-  region = var.aws_region # Acá llamamos a la variable que declaramos antes
+  region = var.aws_region
 }
