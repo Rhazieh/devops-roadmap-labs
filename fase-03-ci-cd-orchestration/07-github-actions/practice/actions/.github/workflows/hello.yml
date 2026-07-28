@@ -9,5 +9,8 @@ jobs:
     hello-world:
         runs-on: ubuntu-latest
         steps:
-            - name: Say hello
-              run: echo "Hello, world!"
+            - name: Echo the message
+              run: echo "Hola Maxi!"
+            - name: Echo the date
+              run: date
+            - run: ls -l
