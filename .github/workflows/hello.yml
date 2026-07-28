@@ -1,0 +1,16 @@
+name: Say hello
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    hello-world:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo the message
+              run: echo "Hola Maxi!"
+            - name: Echo the date
+              run: date
+            - run: ls -l
