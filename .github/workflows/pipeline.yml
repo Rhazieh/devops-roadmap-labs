@@ -16,7 +16,9 @@ jobs:
               with:
                 node-version: '18'
             - name: Install dependencies
-              run: npm install    
+              run: npm install
+              working-directory: fase-03-ci-cd-orchestration/07-github-actions/practice/actions
             - name: Lint
-              run: npm run eslint 
+              run: npm run eslint
+              working-directory: fase-03-ci-cd-orchestration/07-github-actions/practice/actions
         
