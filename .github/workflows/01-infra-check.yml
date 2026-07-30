@@ -1,0 +1,41 @@
+name: 01 - Runner Infra & Trigger Diagnostic
+
+on: 
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+    workflow_dispatch:
+        
+jobs:
+    runner-inspection:
+        name: Inspect Runner System & Environment
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout del código fuente
+              uses: actions/checkout@v4
+
+            - name: Verificar Kernel y Distro del Runner
+              run: |
+                echo "=== SISTEMA OPERATIVO ==="
+                uname -a
+                cat /etc/os-release | grep PRETTY_NAME
+
+            - name: Verificar herramientas de infraestructura disponibles
+              run: |
+                echo "=== HERRAMIENTAS ==="
+                echo "Docker version:"
+                docker --version 
+                echo "Git version:"
+                git --version
+                echo "Python version:"
+                python3 --version
+
+            - name: Inspeccionar contexto del evento Git
+              run: |
+                echo "=== DATOS DEL TRIGGER ==="
+                echo "Evento disparador: ${{ github.event_name }}"
+                echo "Usuario que ejecutó: ${{ github.actor }}"
+                echo "Rama actual: ${{ github.ref_name }}"
+                echo "SHA del commit: ${{ github.sha }}"
