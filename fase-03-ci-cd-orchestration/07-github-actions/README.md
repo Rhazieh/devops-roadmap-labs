@@ -40,7 +40,7 @@ Se desarrolló `.github/workflows/02-contexts-and-secrets.yml` para evaluar la g
 
 ---
 
-##Herramientas Utilizadas
+## Herramientas Utilizadas
 
 * **GitHub Actions** (Engine de automatización CI/CD)
 * **Linux / Bash Scripting** (Diagnóstico del entorno y comandos de sistema)
