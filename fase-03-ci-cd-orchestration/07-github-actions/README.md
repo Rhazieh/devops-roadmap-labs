@@ -1,4 +1,4 @@
-#MPunto 07 Fase 03: CI/CD con GitHub Actions
+# Punto 07 Fase 03: CI/CD con GitHub Actions
 
 Este laboratorio documenta la práctica técnica e incremental para dominar **GitHub Actions** como motor de Integración Continua (CI) y Despliegue Continuo (CD) con un enfoque en **infraestructura, automatización y seguridad**.
 
