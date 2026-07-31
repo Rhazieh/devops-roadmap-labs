@@ -1,0 +1,59 @@
+name: 03 - CI Pipeline (Lint, Test & Docker Build)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'fase-03-ci-cd-orchestration/07-github-actions/**'
+      - '.github/workflows/03-ci-pipeline.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'fase-03-ci-cd-orchestration/07-github-actions/**'
+      - '.github/workflows/03-ci-pipeline.yml'
+  workflow_dispatch:
+
+jobs:
+  lint-and-test:
+    name: Code Quality & Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar entorno Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r fase-03-ci-cd-orchestration/07-github-actions/requirements.txt
+
+      - name: Ejecutar Linter (Flake8)
+        run: |
+          echo "=== VERIFICANDO ESTILO DE CÓDIGO ==="
+          flake8 fase-03-ci-cd-orchestration/07-github-actions/app --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Ejecutar Pruebas Unitarias (Pytest)
+        run: |
+          echo "=== EJECUTANDO TESTS UNITARIOS ==="
+          PYTHONPATH=fase-03-ci-cd-orchestration/07-github-actions/app pytest fase-03-ci-cd-orchestration/07-github-actions/app
+
+  build-docker-image:
+    name: Build Docker Image Test
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Probar compilación de imagen Docker
+        run: |
+          echo "=== CONSTRUYENDO IMAGEN DOCKER LOCAL EN EL RUNNER ==="
+          cd fase-03-ci-cd-orchestration/07-github-actions/
+          docker build -t test-app:local .
+          docker images
